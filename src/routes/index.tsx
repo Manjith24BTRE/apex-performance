@@ -5,8 +5,8 @@ import AutoplayPlugin from "embla-carousel-autoplay";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import {
   Dumbbell, Flame, HeartPulse, Users, Apple, Sparkles, Shield, Clock, Star,
-  Trophy, Activity, Target, Zap, ArrowRight, ChevronDown, Instagram, Facebook,
-  Twitter, Youtube, MapPin, Phone, Mail, Menu, X, Play, Check, MessageCircle,
+  Trophy, Activity, Target, Zap, ArrowRight, ChevronDown, Instagram, Linkedin,
+  MapPin, Phone, Mail, Menu, X, Play, Check, MessageCircle,
 } from "lucide-react";
 
 import hero from "@/assets/hero.jpg";
@@ -499,7 +499,7 @@ function Coaches() {
                 <div className="mt-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="flex gap-2">
                     <a href="#" className="w-8 h-8 rounded-full glass flex items-center justify-center"><Instagram className="w-4 h-4" /></a>
-                    <a href="#" className="w-8 h-8 rounded-full glass flex items-center justify-center"><Twitter className="w-4 h-4" /></a>
+                    <a href="#" className="w-8 h-8 rounded-full glass flex items-center justify-center"><Linkedin className="w-4 h-4" /></a>
                   </div>
                   <a href="#contact" className="btn-gradient text-white text-xs px-3 py-1.5 rounded-full font-semibold">Book Session</a>
                 </div>
@@ -828,11 +828,12 @@ function Footer() {
         <div>
           <div className="text-sm font-semibold mb-4 uppercase tracking-widest">Follow</div>
           <div className="flex gap-3">
-            {[Instagram, Facebook, Twitter, Youtube].map((I, i) => (
-              <a key={i} href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center hover:btn-gradient hover:text-white transition-all">
-                <I className="w-4 h-4" />
-              </a>
-            ))}
+            <a href="https://www.instagram.com/mavros_ai?igsh=bm0wNmJ3MjJjbGEz&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center hover:btn-gradient hover:text-white transition-all">
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a href="https://www.linkedin.com/company/mavros-tech/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center hover:btn-gradient hover:text-white transition-all">
+              <Linkedin className="w-4 h-4" />
+            </a>
           </div>
           <div className="mt-6 rounded-2xl overflow-hidden border border-white/10">
             <iframe
