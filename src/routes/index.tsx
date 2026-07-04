@@ -333,31 +333,40 @@ function Services() {
     { i: Shield, t: "Muscle Building", d: "Structured hypertrophy plans and progressive overload." },
     { i: Star, t: "Performance Training", d: "Athlete-grade programming for competitive results." },
   ];
+  const autoplay = React.useRef(
+    AutoplayPlugin({ delay: 3200, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
   return (
     <section id="services" className="relative py-28 px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHead center eyebrow="Services" title={<>Programs engineered <span className="text-gradient">for results.</span></>} sub="Twelve specialized tracks, one unified system designed to make you unstoppable." />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {items.map((s, i) => (
-            <motion.div key={s.t}
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              transition={{ delay: (i % 6) * 0.05 }}
-              className="group relative rounded-3xl p-8 glass overflow-hidden hover:-translate-y-1 transition-all"
-            >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-primary/10 to-secondary/10" />
-              <div className="relative">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-5 group-hover:btn-gradient transition-all">
-                  <s.i className="w-7 h-7" />
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          plugins={[autoplay.current]}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-5">
+            {items.map((s) => (
+              <CarouselItem key={s.t} className="pl-5 sm:basis-1/2 lg:basis-1/3">
+                <div className="group relative rounded-3xl p-8 glass overflow-hidden hover:-translate-y-1 transition-all h-full">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-primary/10 to-secondary/10" />
+                  <div className="relative">
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-5 group-hover:btn-gradient transition-all">
+                      <s.i className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">{s.t}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{s.d}</p>
+                    <a href="#pricing" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-secondary transition-colors">
+                      Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{s.t}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{s.d}</p>
-                <a href="#pricing" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-secondary transition-colors">
-                  Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex -left-4" />
+          <CarouselNext className="hidden md:flex -right-4" />
+        </Carousel>
       </div>
     </section>
   );
