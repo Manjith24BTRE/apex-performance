@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import AutoplayPlugin from "embla-carousel-autoplay";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import {
   Dumbbell, Flame, HeartPulse, Users, Apple, Sparkles, Shield, Clock, Star,
   Trophy, Activity, Target, Zap, ArrowRight, ChevronDown, Instagram, Facebook,
@@ -333,7 +335,7 @@ function Services() {
     { i: Shield, t: "Muscle Building", d: "Structured hypertrophy plans and progressive overload." },
     { i: Star, t: "Performance Training", d: "Athlete-grade programming for competitive results." },
   ];
-  const autoplay = React.useRef(
+  const autoplay = useRef(
     AutoplayPlugin({ delay: 3200, stopOnInteraction: false, stopOnMouseEnter: true })
   );
   return (
