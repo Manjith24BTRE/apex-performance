@@ -1,17 +1,13 @@
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
-import { nitro } from "nitro/vite";
 
 export default defineConfig({
   plugins: [
     tailwindcss(),
     tsConfigPaths({ projects: ["./tsconfig.json"] }),
-    tanstackStart(),
-    react(),
-    nitro({ defaultPreset: "node-server" })
+    react()
   ],
   resolve: {
     alias: {
@@ -26,7 +22,11 @@ export default defineConfig({
       "@tanstack/query-core"
     ]
   },
+  build: {
+    outDir: "dist",
+    emptyOutDir: true
+  },
   optimizeDeps: {
-    include: ["react", "react-dom", "react-dom/client", "react/jsx-runtime", "react/jsx-dev-runtime"],
+    include: ["react", "react-dom", "react-dom/client", "react/jsx-runtime", "react/jsx-dev-runtime"]
   }
 });
